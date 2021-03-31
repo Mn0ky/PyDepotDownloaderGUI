@@ -2,7 +2,6 @@ PyDepotDownloaderGUI
 ====================
 <p align="center">
   <img src="https://img.shields.io/badge/status-Beta-blue" />
-  <img alt="Visitor Count" src="https://visitor-badge.glitch.me/badge?page_id=Mn0ky.PyDepotDownloaderGUI">
  </p>
  
 A graphical user interface written in Python with PyQt5 for [**DepotDownloader**][depotdownloader] (tested on Windows and MacOS). 
