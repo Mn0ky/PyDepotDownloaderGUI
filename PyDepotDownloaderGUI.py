@@ -46,9 +46,6 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.manpathedit = self.findChild(QtWidgets.QPlainTextEdit, 'manedit')
 		self.manpathedit.insertPlainText(fileName1)
 
-		self.depotid = self.findChild(QtWidgets.QPlainTextEdit, 'depidtextedit')
-		self.password = self.findChild(QtWidgets.QPlainTextEdit, 'passtextedit')
-
 		radiobutton = QRadioButton("Auto")
 		radiobutton.setChecked(True)
 		radiobutton.country = "Auto"
@@ -148,7 +145,9 @@ class MainWindow(QtWidgets.QMainWindow):
 			return
 		self.username = self.findChild(QtWidgets.QPlainTextEdit, 'usertextedit')
 		self.username = self.username.toPlainText()
+		self.password = self.findChild(QtWidgets.QPlainTextEdit, 'passtextedit')
 		self.password = self.password.toPlainText()
+		self.depotid = self.findChild(QtWidgets.QPlainTextEdit, 'depidtextedit')
 		self.depotid = self.depotid.toPlainText()
 
 		downloadpath = os.path.normpath("Downloads/" + appid)
