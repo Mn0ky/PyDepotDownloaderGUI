@@ -2,7 +2,10 @@ PyDepotDownloaderGUI
 ====================
 
 A graphical user interface written in Python with PyQt5 for DepotDownloader (tested on Windows and MacOS).
-DepotDownloader can be found here: https://github.com/SteamRE/DepotDownloader
+DepotDownloader can be found here: https://github.com/SteamRE/DepotDownloader                     
+.NET Core is required and can be downloaded here: https://dotnet.microsoft.com/download/dotnet
+
+***Note: Not all features are currently in the GUI***
 
 A video tutorial for downloading the Python script and using the GUI can be found here: **coming soon**
 
