@@ -7,12 +7,11 @@ PyDepotDownloaderGUI
  
 A graphical user interface written in Python with PyQt5 for [**DepotDownloader**][depotdownloader] (tested on Windows and MacOS). 
 <br/>Includes functionality to allow for multiple manifests to be specified and downloaded sequentially.
-Compiled releases for Windows and MacOS can be found in the [**Releases**][releases] section.
+<br/>Compiled releases for Windows and MacOS can be found in the [**Releases**][releases] section.
+<br/>Not all features are currently in the GUI.
 #### Requirements/Information
 .NET Core Runtime is *required* and can be downloaded [**here**][msdotnet2.1].
-SteamDB provides the info needed for games which can be found [**here**][steamdatabase].
-
-***Note: Not all features are currently in the GUI***
+<br/>SteamDB provides the info needed for games which can be found [**here**][steamdatabase].
 
 A video tutorial for downloading a release version and using the GUI can be found here: **coming soon**
 ### Instructions for downloading a release and using the GUI:
