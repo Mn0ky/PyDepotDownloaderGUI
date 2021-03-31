@@ -2,9 +2,9 @@ PyDepotDownloaderGUI
 ====================
 
 A graphical user interface written in Python with PyQt5 for DepotDownloader (tested on Windows and MacOS).
-DepotDownloader can be found here: https://github.com/SteamRE/DepotDownloader                     
-.NET Core is required and can be downloaded here: https://dotnet.microsoft.com/download/dotnet/2.1
-SteamDB provides the info needed for games which can be found here: https://steamdb.info/
+<br/>Built on top of DepotDownloader which can be found here: https://github.com/SteamRE/DepotDownloader 
+<br/> .NET Core is required and can be downloaded here: https://dotnet.microsoft.com/download/dotnet/2.1
+<br/>SteamDB provides the info needed for games which can be found here: https://steamdb.info/
 
 ***Note: Not all features are currently in the GUI***
 
