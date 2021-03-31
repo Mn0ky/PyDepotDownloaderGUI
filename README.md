@@ -13,7 +13,8 @@ A video tutorial for downloading the Python script and using the GUI can be foun
 ### Downloading the Python script and using the GUI instructions:
 (You *may* need a Python virtual environment)
 
-1. Run the command ``git clone https://github.com/Mn0ky/PyDepotDownloaderGUI.git`` then ``cd PyDepotDownloaderGUI``
+1. Run the command ``git clone https://github.com/Mn0ky/PyDepotDownloaderGUI.git`` 
+<br/>then ``cd PyDepotDownloaderGUI``
 
 2. Install the necessary dependencies with ``pip install -r requirements.txt``
 
