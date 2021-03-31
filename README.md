@@ -1,7 +1,7 @@
 PyDepotDownloaderGUI
 ====================
 
-A graphical user interface written in python for DepotDownloader: https://github.com/SteamRE/DepotDownloader
+A graphical user interface written in Python with PyQt5 for DepotDownloader: https://github.com/SteamRE/DepotDownloader
 
 Users can simply download and run a compiled release from the Releases section (for Windows Or MacOS) or use the Python script.
 A video tutorial for downloading a release and using the gui can be found here: placeholder
