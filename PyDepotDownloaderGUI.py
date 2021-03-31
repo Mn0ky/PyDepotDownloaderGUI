@@ -48,7 +48,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 		self.depotid = self.findChild(QtWidgets.QPlainTextEdit, 'depidtextedit')
 		self.password = self.findChild(QtWidgets.QPlainTextEdit, 'passtextedit')
-		self.username = self.findChild(QtWidgets.QPlainTextEdit, 'usertextedit')
 
 		radiobutton = QRadioButton("Auto")
 		radiobutton.setChecked(True)
@@ -147,7 +146,7 @@ class MainWindow(QtWidgets.QMainWindow):
 				ErrorText += ("</span>")
 			self.output.append(ErrorText)
 			return
-
+		self.username = self.findChild(QtWidgets.QPlainTextEdit, 'usertextedit')
 		self.username = self.username.toPlainText()
 		self.password = self.password.toPlainText()
 		self.depotid = self.depotid.toPlainText()
