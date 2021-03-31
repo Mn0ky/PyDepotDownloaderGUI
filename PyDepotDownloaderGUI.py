@@ -74,8 +74,10 @@ class MainWindow(QtWidgets.QMainWindow):
 		if radioButton.isChecked():
 			self.rbv = radioButton.country
 			if self.rbv == "Auto":
+				self.depotid = self.findChild(QtWidgets.QPlainTextEdit, 'depidtextedit')
 				self.depotid.setEnabled(True)
 			else:
+				self.depotid = self.findChild(QtWidgets.QPlainTextEdit, 'depidtextedit')
 				self.depotid.setEnabled(False)
 				self.depotid.setPlainText("")	
 
