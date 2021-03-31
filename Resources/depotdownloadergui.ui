@@ -263,7 +263,7 @@ border-radius: 8px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPlainTextEdit" name="appidtextedit">
+      <widget class="QPlainTextEdit" name="passtextedit">
        <property name="maximumSize">
         <size>
          <width>200</width>
@@ -321,14 +321,14 @@ border-radius: 8px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="appidlabel">
+      <widget class="QLabel" name="passwordlabel">
        <property name="font">
         <font>
          <family>Arial</family>
         </font>
        </property>
        <property name="text">
-        <string>      AppID:</string>
+        <string>Password:</string>
        </property>
       </widget>
      </item>
@@ -345,7 +345,7 @@ border-radius: 8px;</string>
     </property>
     <layout class="QVBoxLayout" name="passdeplay">
      <item>
-      <widget class="QPlainTextEdit" name="passtextedit">
+      <widget class="QPlainTextEdit" name="appidtextedit">
        <property name="maximumSize">
         <size>
          <width>200</width>
@@ -425,14 +425,14 @@ border-radius: 8px;</string>
     </property>
     <layout class="QVBoxLayout" name="deppaslay">
      <item>
-      <widget class="QLabel" name="passwordlabel">
+      <widget class="QLabel" name="appidlabel">
        <property name="font">
         <font>
          <family>Arial</family>
         </font>
        </property>
        <property name="text">
-        <string>Password:</string>
+        <string>      AppID:</string>
        </property>
       </widget>
      </item>
@@ -616,7 +616,7 @@ border-radius: 8px;</string>
      <x>0</x>
      <y>0</y>
      <width>746</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
