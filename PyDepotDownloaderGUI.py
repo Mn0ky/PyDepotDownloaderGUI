@@ -22,7 +22,7 @@ class MainWindow(QtWidgets.QMainWindow):
 		super(MainWindow, self).__init__()
 		uipath = os.path.normpath("Resources/depotdownloadergui.ui")
 		# uncomment line below if compiling
-		uipath = os.path.join(os.path.dirname(sys.executable), 'Resources/depotdownloadergui.ui')
+		# uipath = os.path.join(os.path.dirname(sys.executable), 'Resources/depotdownloadergui.ui')
 		uic.loadUi(uipath, self)
 
 		self.outputedit = self.findChild(QtWidgets.QTextEdit, 'outputedit')
