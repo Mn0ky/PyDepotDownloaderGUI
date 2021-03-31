@@ -1,7 +1,7 @@
 PyDepotDownloaderGUI
 ====================
 
-A graphical user interface written in Python with PyQt5 for DepotDownloader.
+A graphical user interface written in Python with PyQt5 for DepotDownloader (tested on Windows and MacOS).
 DepotDownloader can be found here: https://github.com/SteamRE/DepotDownloader
 
 A video tutorial for downloading the Python script and using the GUI can be found here: **coming soon**
