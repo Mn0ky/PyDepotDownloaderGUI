@@ -8,7 +8,7 @@ from subprocess import call
 
 os.path.join(os.getcwd())
 #uncomment line below if compiling
-os.chdir(os.path.dirname(sys.executable))
+#os.chdir(os.path.dirname(sys.executable))
 
 fileName1 = ""
 manlist = []
@@ -131,7 +131,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 		dllpath = str(os.getcwd() + "/Resources/depotdownloader-2.3.6/DepotDownloader.dll")
 		# uncomment line below if compiling
-		dllpath = str(os.path.dirname(sys.executable) + "/Resources/depotdownloader-2.3.6/DepotDownloader.dll")
+		#dllpath = str(os.path.dirname(sys.executable) + "/Resources/depotdownloader-2.3.6/DepotDownloader.dll")
 		fileName2 = os.path.normpath(dllpath)
 
 		appid = self.findChild(QtWidgets.QPlainTextEdit, 'appidtextedit')
@@ -154,8 +154,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
 		downloadpath = os.path.normpath("Downloads/" + appid)
 		# uncomment lines below if compiling
-		downloadpath = str(os.path.dirname(sys.executable)) + "/Downloads/" + appid
-		downloadpath = os.path.normpath(downloadpath)
+		# downloadpath = str(os.path.dirname(sys.executable)) + "/Downloads/" + appid
+		# downloadpath = os.path.normpath(downloadpath)
 
 		big_command_list = []
 		big_command = str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -dir " + downloadpath +  " -os ")
