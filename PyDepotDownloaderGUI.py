@@ -134,7 +134,6 @@ class MainWindow(QtWidgets.QMainWindow):
 					ErrorText += ("Error: Manifest List Not Specified!")
 					ErrorText += ("</span>")
 				self.output.append(ErrorText)
-			print("ManifestID List cannot be or is already formatted!")	
 		
 		else:
 			if os.name == "nt":
@@ -200,7 +199,6 @@ class MainWindow(QtWidgets.QMainWindow):
 					downloadpath=os.path.normpath("Downloads/" + a + " " + str(index)+ ")")	
 					big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -depot " + self.depotid + " -manifest " + a + " -dir " + "\""+downloadpath+"\""))
 					index = index + 1
-				print("here: ", big_command_list)
 		else:
 			if not self.depotid == "":
 				if os.name == 'nt':
