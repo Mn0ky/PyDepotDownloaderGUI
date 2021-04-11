@@ -2,7 +2,6 @@ PyDepotDownloaderGUI
 ====================
 <p align="center">
   <img src="https://img.shields.io/badge/status-Beta-blue" />
-  <img alt="Visitor Count" src="https://visitor-badge.glitch.me/badge?page_id=Mn0ky.PyDepotDownloaderGUI">
  </p>
  
 A graphical user interface written in Python with PyQt5 for [**DepotDownloader**][depotdownloader] (tested on Windows and MacOS). 
@@ -11,6 +10,7 @@ A graphical user interface written in Python with PyQt5 for [**DepotDownloader**
 <br/>Not all features are currently in the GUI.
 #### Requirements/Information
 .NET Core Runtime is *required* and can be downloaded [**here**][msdotnet2.1].
+<br/>You *might* need the visual c++ redistributable from [**here.**][vc] (Users running Windows 10 should not)
 <br/>SteamDB provides the info needed for games which can be found [**here**][steamdatabase].
 
 A video tutorial for downloading a release version and using the GUI can be found here: **coming soon**
@@ -35,3 +35,4 @@ A video tutorial for downloading a release version and using the GUI can be foun
 [releases]: https://github.com/Mn0ky/PyDepotDownloaderGUI/releases/latest
 [msdotnet2.1]: https://dotnet.microsoft.com/download/dotnet/2.1
 [steamdatabase]: https://steamdb.info/
+[vc]: https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0
