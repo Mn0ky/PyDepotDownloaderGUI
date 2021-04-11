@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>746</width>
-    <height>605</height>
+    <height>672</height>
    </rect>
   </property>
   <property name="font">
@@ -180,6 +180,9 @@ border-radius: 8px;</string>
          <family>Arial</family>
         </font>
        </property>
+       <property name="cursor" stdset="0">
+        <cursorShape>ForbiddenCursor</cursorShape>
+       </property>
        <property name="styleSheet">
         <string notr="true">padding: 1px;
 color: #fff;
@@ -201,6 +204,9 @@ border-radius: 8px;</string>
        </property>
        <property name="lineWrapMode">
         <enum>QPlainTextEdit::NoWrap</enum>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
        <property name="tabStopWidth">
         <number>80</number>
@@ -263,8 +269,8 @@ border-radius: 8px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPlainTextEdit" name="passtextedit">
-       <property name="maximumSize">
+      <widget class="QLineEdit" name="passtextedit">
+       <property name="minimumSize">
         <size>
          <width>200</width>
          <height>23</height>
@@ -282,17 +288,11 @@ border-style: solid;
 border: 2px solid #fff;
 border-radius: 8px;</string>
        </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="tabChangesFocus">
-        <bool>true</bool>
-       </property>
-       <property name="lineWrapMode">
-        <enum>QPlainTextEdit::NoWrap</enum>
+       <property name="clearButtonEnabled">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -604,6 +604,25 @@ border-radius: 8px;</string>
        </property>
        <property name="overwriteMode">
         <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_7">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>540</y>
+      <width>121</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="giflay">
+     <item>
+      <widget class="QLabel" name="loader">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

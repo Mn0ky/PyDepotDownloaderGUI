@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, uic, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog, QRadioButton, QHBoxLayout
+from PyQt5.QtGui import QMovie
 import sys
 import webbrowser, os
 import os, signal
@@ -45,6 +46,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
 		self.manpathedit = self.findChild(QtWidgets.QPlainTextEdit, 'manedit')
 		self.manpathedit.insertPlainText(fileName1)
+
+		self.progress = self.findChild(QtWidgets.QLabel, 'loader')
+		ldico = os.path.normpath("Resources/loading_icon.gif")
+		self.movie = QMovie(ldico)
+		self.progress.setMovie(self.movie)
 
 		radiobutton = QRadioButton("Auto")
 		radiobutton.setChecked(True)
@@ -94,8 +100,6 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.manpathedit = self.findChild(QtWidgets.QPlainTextEdit, 'manedit')
 		self.manpathedit.setPlainText(fileName1)
 			
-
-
 	def brsdlpushbuttonPressed(self):
 		if os.path.isdir('Downloads'):
 			if os.name == 'nt':
@@ -110,14 +114,25 @@ class MainWindow(QtWidgets.QMainWindow):
 				call(["open", "Downloads"])
 
 	def formatpushbuttonPressed(self):
-		my_file = open(fileName1, "r")
-		content_list = my_file.readlines()
-		for i in content_list:
-			manlist.append(i.split('\t')[2])
-		with open(fileName1, "w") as output:
-			for a in manlist:
-				output.write(str(a))
-			output.close() 
+		if os.path.isfile(fileName1):
+			my_file = open(fileName1, "r")
+			content_list = my_file.readlines()
+			for i in content_list:
+				manlist.append(i.split('\t')[2])
+			with open(fileName1, "w") as output:
+				for a in manlist:
+					output.write(str(a))
+				output.close()
+		else:
+			if os.name == "nt":
+				ErrorText = "<span style=\" font-size:9pt; font-weight:1200; color:#ff0000;\" >"
+				ErrorText += ("Error: Manifest List Not Specified!")
+				ErrorText += ("</span>")
+			else:
+				ErrorText = "<span style=\" font-size:12pt; font-weight:1200; color:#ff0000;\" >"
+				ErrorText += ("Error: Manifest List Not Specified!")
+				ErrorText += ("</span>")
+			self.output.append(ErrorText)	
 
 	def callProgram(self):
 		if fileName1 != "":
@@ -125,59 +140,72 @@ class MainWindow(QtWidgets.QMainWindow):
 				manifestcontent = f.readlines()
 			manifestcontent = [x.strip() for x in manifestcontent]			
 
-		index = 1
+			index = 1
 
-		dllpath = str(os.getcwd() + "/Resources/depotdownloader-2.3.6/DepotDownloader.dll")
-		# uncomment line below if compiling
-		#dllpath = str(os.path.dirname(sys.executable) + "/Resources/depotdownloader-2.3.6/DepotDownloader.dll")
-		fileName2 = os.path.normpath(dllpath)
+			dllpath = str(os.getcwd() + "/Resources/depotdownloader-2.3.6/DepotDownloader.dll")
+			# uncomment line below if compiling
+			#dllpath = str(os.path.dirname(sys.executable) + "/Resources/depotdownloader-2.3.6/DepotDownloader.dll")
+			fileName2 = os.path.normpath(dllpath)
 
-		appid = self.findChild(QtWidgets.QPlainTextEdit, 'appidtextedit')
-		appid = appid.toPlainText()
-		if appid == "":
+			appid = self.findChild(QtWidgets.QPlainTextEdit, 'appidtextedit')
+			appid = appid.toPlainText()
+			if appid == "":
+				if os.name == 'nt':
+					ErrorText = "<span style=\" font-size:9pt; font-weight:1200; color:#ff0000;\" >"
+					ErrorText += ("Error: Must specify AppID!")
+					ErrorText += ("</span>")
+				else:
+					ErrorText = "<span style=\" font-size:12pt; font-weight:1200; color:#ff0000;\" >"
+					ErrorText += ("Error: Must specify AppID!")
+					ErrorText += ("</span>")
+				self.output.append(ErrorText)
+				return
+			self.username = self.findChild(QtWidgets.QPlainTextEdit, 'usertextedit')
+			self.username = self.username.toPlainText()
+			self.password = self.findChild(QtWidgets.QLineEdit, 'passtextedit')
+			self.password = self.password.text()
+			self.depotid = self.findChild(QtWidgets.QPlainTextEdit, 'depidtextedit')
+			self.depotid = self.depotid.toPlainText()
+
+			downloadpath = os.path.normpath("Downloads/" + appid)
+			# uncomment lines below if compiling
+			# downloadpath = str(os.path.dirname(sys.executable)) + "/Downloads/" + appid
+			# downloadpath = os.path.normpath(downloadpath)
+
+			big_command_list = []
+			big_command = str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -dir " + downloadpath +  " -os ")
+			if self.depotid =="" :
+				if self.rbv == "Windows" :
+					big_command_list.append(big_command + "windows")
+				elif self.rbv == "MacOS" :
+					big_command_list.append(big_command + "macos")
+				elif self.rbv == "Linux" :
+					big_command_list.append(big_command + "linux")
+				else:
+					big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -dir " + downloadpath))
+			else:
+				for a in manifestcontent:
+					downloadpath=os.path.normpath("Downloads/" + a + " " + str(index)+ ")")	
+					big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -depot " + self.depotid + " -manifest " + a + " -dir " + "\""+downloadpath+"\""))
+					index = index + 1
+		else:
 			if os.name == 'nt':
-				ErrorText = "<span style=\" font-size:9pt; font-weight:1200; color:#ff0000;\" >"
-				ErrorText += ("Error: Must specify AppID!")
-				ErrorText += ("</span>")
+					ErrorText = "<span style=\" font-size:9pt; font-weight:1200; color:#ff0000;\" >"
+					ErrorText += ("Error: Must specify Manifest List!")
+					ErrorText += ("</span>")
 			else:
 				ErrorText = "<span style=\" font-size:12pt; font-weight:1200; color:#ff0000;\" >"
-				ErrorText += ("Error: Must specify AppID!")
+				ErrorText += ("Error: Must specify Manifest List!")
 				ErrorText += ("</span>")
 			self.output.append(ErrorText)
-			return
-		self.username = self.findChild(QtWidgets.QPlainTextEdit, 'usertextedit')
-		self.username = self.username.toPlainText()
-		self.password = self.findChild(QtWidgets.QPlainTextEdit, 'passtextedit')
-		self.password = self.password.toPlainText()
-		self.depotid = self.findChild(QtWidgets.QPlainTextEdit, 'depidtextedit')
-		self.depotid = self.depotid.toPlainText()
-
-		downloadpath = os.path.normpath("Downloads/" + appid)
-		# uncomment lines below if compiling
-		# downloadpath = str(os.path.dirname(sys.executable)) + "/Downloads/" + appid
-		# downloadpath = os.path.normpath(downloadpath)
-
-		big_command_list = []
-		big_command = str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -dir " + downloadpath +  " -os ")
-		if self.depotid =="" :
-			if self.rbv == "Windows" :
-				big_command_list.append(big_command + "windows")
-			elif self.rbv == "MacOS" :
-				big_command_list.append(big_command + "macos")
-			elif self.rbv == "Linux" :
-				big_command_list.append(big_command + "linux")
-			else:
-				big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -dir " + downloadpath))
-		else:
-			for a in manifestcontent:
-				downloadpath=os.path.normpath("Downloads/" + a + " " + str(index)+ ")")	
-				big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -depot " + self.depotid + " -manifest " + a + " -dir " + "\""+downloadpath+"\""))
-				index = index + 1
+			return			
 
 		manager = SequentialManager(self)
 		manager.resultsChanged.connect(self.onResultsChanged)
 		manager.start(big_command_list)
 		self.runpushbutton.setEnabled(False)
+		self.movie.start()
+		self.progress.show()
 
 	def onResultsChanged(self, result):
 		result = str(result).replace("b' ", "")
@@ -257,9 +285,12 @@ class SequentialManager(QtCore.QObject):
 					SuccessText += ("Success: Download(s) Complete!")
 					SuccessText += ("</span>")
 				self.parent().output.append(SuccessText)
+				self.parent().progress.hide()
 			else:
 				self.finished.emit()
 				self.parent().runpushbutton.setEnabled(True)
+				self.parent().movie.stop()
+				self.parent().progress.hide()
 
 app = QtWidgets.QApplication(sys.argv)
 window = MainWindow()
