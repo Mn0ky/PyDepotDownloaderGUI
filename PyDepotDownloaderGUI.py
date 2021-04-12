@@ -198,11 +198,16 @@ class MainWindow(QtWidgets.QMainWindow):
 					big_command_list.append(big_command + "linux")
 				else:
 					big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -dir " + downloadpath))
+					if self.username == "" and self.password == "":
+						big_command_list = [x.replace(' -username ', '') for x in big_command_list]
+						big_command_list = [x.replace(' -password ', '') for x in big_command_list]
 			else:
 				for a in manifestcontent:
 					downloadpath=os.path.normpath("Downloads/" + a + " " + str(index)+ ")")	
 					big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -depot " + self.depotid + " -manifest " + a + " -dir " + "\""+downloadpath+"\""))
-					index = index + 1
+					if self.username == "" and self.password == "":
+						big_command_list = [x.replace(' -username ', '') for x in big_command_list]
+						big_command_list = [x.replace(' -password ', '') for x in big_command_list]
 		else:
 			if not self.depotid == "":
 				if os.name == 'nt':
@@ -223,7 +228,10 @@ class MainWindow(QtWidgets.QMainWindow):
 				elif self.rbv == "Linux" :
 					big_command_list.append(big_command + "linux")
 				else:
-					big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -dir " + downloadpath))			
+					big_command_list.append(str("dotnet " + fileName2 +" -app " + appid + " -username " + self.username + " -password " + self.password + " -dir " + downloadpath))
+					if self.username == "" and self.password == "":
+						big_command_list = [x.replace(' -username ', '') for x in big_command_list]
+						big_command_list = [x.replace(' -password ', '') for x in big_command_list]	
 
 		manager = SequentialManager(self)
 		manager.resultsChanged.connect(self.onResultsChanged)
