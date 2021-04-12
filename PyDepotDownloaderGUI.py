@@ -101,17 +101,12 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.manpathedit.setPlainText(fileName1)
 			
 	def brsdlpushbuttonPressed(self):
-		if os.path.isdir('Downloads'):
-			if os.name == 'nt':
-				webbrowser.open(os.path.realpath('Downloads'))
-			else:
-				call(["open", "Downloads"])
-		else:
+		if not os.path.isdir('Downloads'):
 			os.mkdir('Downloads')
-			if os.name == 'nt':
-				webbrowser.open(os.path.realpath('Downloads'))
-			else:
-				call(["open", "Downloads"])
+		if os.name == 'nt':
+			webbrowser.open(os.path.realpath('Downloads'))
+		else:
+			call(["open", "Downloads"])
 
 	def formatpushbuttonPressed(self):
 		if os.path.isfile(fileName1):
@@ -123,15 +118,24 @@ class MainWindow(QtWidgets.QMainWindow):
 				with open(fileName1, "w") as output:
 					for a in manlist:
 						output.write(str(a))
-					output.close()	
+				if os.name == 'nt':
+					SuccessText = "<span style=\" font-size:9pt; font-weight:1200; color:#00e600;\" >"
+					SuccessText += ("Success: Formatted Manifest List!")
+					SuccessText += ("</span>")
+				else:
+					SuccessText = "<span style=\" font-size:12pt; font-weight:1200; color:#00e600;\" >"
+					SuccessText += ("Success: Formatted Manifest List!")
+					SuccessText += ("</span>")
+				self.output.append(SuccessText)			
+
 			except Exception:
 				if os.name == "nt":
 					ErrorText = "<span style=\" font-size:9pt; font-weight:1200; color:#ff0000;\" >"
-					ErrorText += ("Error: Manifest List Not Specified!")
+					ErrorText += ("Error: Manifest List Not Specified Or Not Formattable!")
 					ErrorText += ("</span>")
 				else:
 					ErrorText = "<span style=\" font-size:12pt; font-weight:1200; color:#ff0000;\" >"
-					ErrorText += ("Error: Manifest List Not Specified!")
+					ErrorText += ("Error: Manifest List Not Specified Or Not Formattable!")
 					ErrorText += ("</span>")
 				self.output.append(ErrorText)
 		
@@ -203,11 +207,11 @@ class MainWindow(QtWidgets.QMainWindow):
 			if not self.depotid == "":
 				if os.name == 'nt':
 					ErrorText = "<span style=\" font-size:9pt; font-weight:1200; color:#ff0000;\" >"
-					ErrorText += ("Error: Must specify Manifest List!")
+					ErrorText += ("Error: Manifest List Not Specified!")
 					ErrorText += ("</span>")
 				else:
 					ErrorText = "<span style=\" font-size:12pt; font-weight:1200; color:#ff0000;\" >"
-					ErrorText += ("Error: Must specify Manifest List!")
+					ErrorText += ("Error: Manifest List Not Specified!")
 					ErrorText += ("</span>")
 				self.output.append(ErrorText)
 				return
@@ -317,6 +321,5 @@ app = QtWidgets.QApplication(sys.argv)
 window = MainWindow()
 app.exec_()
 
-f= open('manidlistpath.txt','w')
-f.write(fileName1)
-f.close()
+with open('manidlistpath.txt', "w") as f:
+	f.write(fileName1)
