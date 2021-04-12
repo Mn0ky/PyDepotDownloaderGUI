@@ -7,7 +7,7 @@ PyDepotDownloaderGUI
 A graphical user interface written in Python with PyQt5 for [**DepotDownloader**][depotdownloader] (tested on Windows and MacOS). 
 <br/>Includes functionality to allow for multiple manifests to be specified and downloaded sequentially.
 <br/>Compiled releases for Windows and MacOS can be found in the [**Releases**][releases] section.
-<br/>Not all features are currently in the GUI.
+<br/>Not all features are currently in the GUI, please use the Python script if you're wanting the latest updates.
 #### Requirements/Information
 .NET Core Runtime is *required* and can be downloaded [**here**][msdotnet2.1].
 <br/>You *might* need the visual c++ redistributable from [**here.**][vc] (Users running Windows 10 should not)
