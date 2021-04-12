@@ -3,7 +3,6 @@ PyDepotDownloaderGUI
 <p align="center">
   <img src="https://img.shields.io/badge/status-Beta-blue" />
  </p>
-<img src="https://imgur.com/a/aJtg51c.png" />
 
 A graphical user interface written in Python with PyQt5 for [**DepotDownloader**][depotdownloader] (tested on Windows and MacOS). 
 <br/>Includes functionality to allow for multiple manifests to be specified and downloaded sequentially.
