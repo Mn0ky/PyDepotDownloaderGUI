@@ -628,6 +628,46 @@ border-radius: 8px;</string>
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_8">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>540</y>
+      <width>173</width>
+      <height>33</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="cblay">
+     <item>
+      <widget class="QPushButton" name="cb">
+       <property name="minimumSize">
+        <size>
+         <width>171</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">padding: 1px;
+color: rgb(189, 198, 208);
+border-style: solid;
+border: 2px solid #fff;
+border-radius: 8px;</string>
+       </property>
+       <property name="text">
+        <string>Clear Output</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

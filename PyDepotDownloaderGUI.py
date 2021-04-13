@@ -42,6 +42,9 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.buttonformat = self.findChild(QtWidgets.QPushButton, 'formatpushbutton')
 		self.buttonformat.clicked.connect(self.formatpushbuttonPressed)
 
+		self.cb = self.findChild(QtWidgets.QPushButton, 'cb')
+		self.cb.clicked.connect(self.cbPressed)
+
 		self.killbutton = self.findChild(QtWidgets.QPushButton, 'candown')
 
 		self.manpathedit = self.findChild(QtWidgets.QPlainTextEdit, 'manedit')
@@ -240,6 +243,19 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.runpushbutton.setEnabled(False)
 		self.movie.start()
 		self.progress.show()
+
+	def cbPressed(self):
+		self.output.setPlainText('')
+		if os.name == 'nt':
+			WarningText = "<span style=\" font-size:9pt; font-weight:1200; color:#ff7733;\" >"
+			WarningText += ("Warning: Output Cleared!")
+			WarningText += ("</span>")
+		else:
+			WarningText = "<span style=\" font-size:12pt; font-weight:1200; color:#ff7733;\" >"
+			WarningText += ("Warning: Output Cleared!")
+			WarningText += ("</span>")
+		self.output.append(WarningText)
+				
 
 	def onResultsChanged(self, result):
 		result = str(result).replace("b' ", "")
